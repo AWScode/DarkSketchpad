@@ -15,6 +15,6 @@ public class CoffeeShop {
     System.out.println(name + ", your suger free, low fat iced water is ready.");
 //it's funny because water doesn't have any sugar or fat. This is inspired by that cinderella movie with Hillary Huff.
     System.out.println("oops. we messed up. please try again never.");
-//it's an anxty coffee shop
+//it's an angsty coffee shop
   }
 }

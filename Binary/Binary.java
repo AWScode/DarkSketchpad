@@ -8,6 +8,7 @@ this is my super super super rough draft to try and just outline what i'm gonna 
 */
 
 import java.util.*;
+<<<<<<< HEAD
 import java.util.Scanner;
 import java.util.Arrays;
 
@@ -59,6 +60,8 @@ public class Binary{ //binary is just a name for the class. could have been name
 
 
 
+=======
+>>>>>>> ef2864917152f68c075b5fa4618c17dfda9b75f4
 public class Binary {
   public static void main(String[] args){
     Integer.parseInt(String, int radix);
@@ -72,16 +75,23 @@ public class Binary {
     //then I think i call on some method or something to do what they wanted to do with the two numbers
     //do some more method stuff to try and get it to work
     System.out.println(""); //the answer to the thing they want to happen
+<<<<<<< HEAD
 
     //need to figure out how to do this stuff - maybe ask chloe about it
 
     //considine says that we're gonna have to use string, next line, and other stuff. gotta look it up
+=======
+    //NEED TO FIGURE OUT HOW TO DO THIS STUFF - MAYBE WORK WITH CHLOE ON IT
+
+    //considine says that we gonna have to use string, next line and stuff. gotta look it up
+>>>>>>> ef2864917152f68c075b5fa4618c17dfda9b75f4
     //also vicky is doing something super different so this probably isn't right
   }
 
   //make some methods here
 
   //add method
+<<<<<<< HEAD
   public String addBinary(String a, String b) {
     StringBuilder sb = new StringBuilder();
 
@@ -126,6 +136,12 @@ public class Binary {
 //subtract method
 //multiply method
 //divide method
+=======
+  //subtract method
+  //multiply method
+  //divide method
+
+>>>>>>> ef2864917152f68c075b5fa4618c17dfda9b75f4
 
 }
 

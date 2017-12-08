@@ -67,7 +67,7 @@ public class ShoppingSpree {
     spree.buyMilk();
     spree.buyToothbrush();
 
-    System.out.println("You have " + spree.getMoney() + " dollars left."); // this will print out how much of the budget is left
+    System.out.println("You have " + spree.getMoney() + "dolars left."); // this will print out how much of the budget is left
     spree.getBags();
   }
 

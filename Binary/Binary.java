@@ -35,22 +35,26 @@ public class Binary{ //class is called "Binary"
 
     if(a[7].equals(0) && b[7].equals(0)){ //if the last bit of a is 0 AND the last bit of b is 0 then...
       s[7] = 0; //the sum is 0
-      else if (a[7].equals(1) && b[7]. equals(1)) //if the last bit of a is 1 AND the last bit of b is 1 then...
+      else if (a[7].equals(1) && b[7]. equals(1)){ //if the last bit of a is 1 AND the last bit of b is 1 then...
         s[7] = 0; //the sum is 0 and...
         remainder = 1; //the remainder is 1
-        else
+        else{
           s = 1; //otherwise the sum is 1
+        }
+      }
     }
-    for (i<7; i=0; i--){ //loop to repeat process below until a[0], b[0], and s[0]
+    for (int i=7; i>=0; i--){ //loop to repeat process below until a[0], b[0], and s[0]
       if (a[i].equals(0) && b[i].equals(0) && remainder.equals(0)){
         s[i] = 0;
         remainder = 0;
-        else if (a[i].equals(1) && b[i].equals(1) && remainder.equals(1))
+        else if (a[i].equals(1) && b[i].equals(1) && remainder.equals(1)){
           s[i] = 1;
           remainder = 1;
-          else
+          else{
             s[i] = 1;
             remainder = 0;
+          }
+        }
       }
     }
   }//end of addBinary
@@ -58,7 +62,18 @@ public class Binary{ //class is called "Binary"
   public static int subtractBinary(){
     //first i need to change b so that it is two's complement
     //then i just add with new b
+    for (int i=7; i>=0; i--){
+      if (b[i].equals(0)){
+        c[i] = 1;
+        else{
+          c[i] = 0;
+          remainder = 1; //need to somehow make c a new input and make sure it is used in the answer. or do i just keep it as b?
+        }
+      }
+    }
 
-  }
+    //then i just do addBinary except change b to c.
+
+  }//end of subtractBinary
 
 }

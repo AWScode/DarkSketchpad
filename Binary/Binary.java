@@ -18,29 +18,34 @@ public class Binary{ //class is called "Binary"
 
     if(a[7].equals(0) && b[7].equals(0)){ //if the last bit of a is 0 AND the last bit of b is 0 then...
       s[7] = 0; //the sum is 0
+    }
       else if (a[7].equals(1) && b[7]. equals(1)){ //if the last bit of a is 1 AND the last bit of b is 1 then...
         s[7] = 0; //the sum is 0 and...
         remainder = 1; //the remainder is 1
+      }
         else{
           s = 1; //otherwise the sum is
           remainder = 0;
         }
-      }
-    }
+
     //loop to repeat process below until a[0], b[0], and s[0].
     for (int i=6; i>=0; i--){ // start i at 6 and go until i is more than or equal to 0 and go in the 7to0 direction.
-      if (a[i].equals(0) && b[i].equals(0) && remainder.equals(0)){
+      if (a[i].equals(0) && b[i].equals(0) && remainder.equals(0)){ //if no variables are 1
         s[i] = 0;
         remainder = 0;
       }
-        else if (a[i].equals(1) ^ b[i].equals(1) && remainder.equals(1)){
-          s[i] = 0;
+        else if (a[i].equals(1) && b[i].equals(1) && remainder.equals(1)){ //if all variables are 1
+          s[i] = 1;
           remainder = 1;
         }
-          else{ //       if a=1 && b=1 && r=1 then s=1 and r=1; if
+          else if (a[i].equals(1) ^ b[i].equals(1) ^ remainder.equals(1)){ //if only one variable=1 then s=1 and r=0.
             s[i] = 1;
-            remainder = 0; //these aren't all the different variations
+            remainder = 0;
           }
+            else{ //if two variables=1 then s=0 and r=1
+              s[i] = 0;
+              remainder = 1;
+            }
     }
   }//end of addBinary
 
@@ -50,16 +55,24 @@ public class Binary{ //class is called "Binary"
     for (int i=7; i>=0; i--){
       if (b[i].equals(0)){
         c[i] = 1;
+      }
         else{
           c[i] = 0;
           remainder = 1; //need to somehow make c a new input and make sure it is used in the answer. or do i just keep it as b?
         }
-      }
     }
 
     //then i just do addBinary except change b to c.
 
   }//end of subtractBinary
+
+  public static int multiplyBinary(){
+
+  }//end of multiplyBinary
+
+  public static int divideBinary(){
+
+  }//end of divideBinary
 
   public static void main(String[] args){ //main method
     //ask user to input 2 8 bit numbers and call each a and b. then output number "s"
@@ -69,13 +82,20 @@ public class Binary{ //class is called "Binary"
     System.out.println("now type a second 8 bit binary number"); //this makes the user's second input = b
     Scanner b[] = new Scanner(System.in);
 
-    System.out.println("choose what you would like to do with your binary numbers: add, subtract, multiply, divide")
+    System.out.println("choose what you would like to do with your binary numbers: add, subtract, multiply, divide");
     String atith = scan.nextLine();
     if (atith.equals("add")){
-      System.out.println("the sum of your numbers is" + addBinary)
-      else (atith.equals("subtract"))
-        System.out.System.out.println("the difference of your numbers is" + subtractBinary);
+      System.out.println("the sum of your numbers is " + addBinary);
+    }
+      else if (atith.equals("subtract")){
+        System.out.println("the difference of your numbers is " + subtractBinary);
+      }
+      else if (atith.equals("multiply")){
+        System.out.println("the product of your numbers is " + multiplyBinary);
+      }
+      else (atith.equals("divide")){ //if it is else then I don't need (atith.equals("divide")) except when I delete it I get like 60 more errors but with it I only have like 2 errors...
+        System.out.println("the quotient of your numbers is " + divideBinary);
+      }
     } //still need to do multiply and divide
-  }
 
 }

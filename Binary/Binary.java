@@ -57,12 +57,20 @@ public class Binary{ //class is called "Binary"
         c[i] = 1;
       }
         else{
-          c[i] = 0;
-          remainder = 1; //need to somehow make c a new input and make sure it is used in the answer. or do i just keep it as b?
+          c[i] = 0; //need to somehow make c a new input and make sure it is used in the answer. or do i just keep it as b?
+        }
+    }
+    for (int i=7; i>=0; i--){
+      if (c[i].equals(0)){
+        d[i] = 1;
+    }
+        else{
+          d[i] = 0;
+          remainder = 1;
         }
     }
 
-    //then i just do addBinary except change b to c.
+    //then i just do addBinary except change b to d.
 
   }//end of subtractBinary
 

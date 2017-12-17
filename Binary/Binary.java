@@ -1,196 +1,101 @@
 /* Anna Salam
 Binary Project
 Due: 12/18/17
-*/
-/*
-import java.util.*;
 
-public class Binary{ //class is called "Binary"
-
-  int i = 0;
-  int remainder = 0; //this says that the first number we deal with has a remainder of 0
-  int a = new int[8]; //this makes an array for the first inputed binary number
-  int b = new int[8]; //array for second inputed number
-  int s = new int[8]; //array for outputed number
-
-
-  public static int addBinary(int[] a, int[] b){ //addition method called "addBinary"
-
-    if(a[7].equals(0) && b[7].equals(0)){ //if the last bit of a is 0 AND the last bit of b is 0 then...
-      s[7] = 0; //the sum is 0
-    }
-      else if (a[7].equals(1) && b[7]. equals(1)){ //if the last bit of a is 1 AND the last bit of b is 1 then...
-        s[7] = 0; //the sum is 0 and...
-        remainder = 1; //the remainder is 1
-      }
-        else{
-          s = 1; //otherwise the sum is
-          remainder = 0;
-        }
-
-    //loop to repeat process below until a[0], b[0], and s[0].
-    for (int i=6; i>=0; i--){ // start i at 6 and go until i is more than or equal to 0 and go in the 7to0 direction.
-      if (a[i].equals(0) && b[i].equals(0) && remainder.equals(0)){ //if no variables are 1
-        s[i] = 0;
-        remainder = 0;
-      }
-        else if (a[i].equals(1) && b[i].equals(1) && remainder.equals(1)){ //if all variables are 1
-          s[i] = 1;
-          remainder = 1;
-        }
-          else if (a[i].equals(1) ^ b[i].equals(1) ^ remainder.equals(1)){ //if only one variable=1 then s=1 and r=0.
-            s[i] = 1;
-            remainder = 0;
-          }
-            else{ //if two variables=1 then s=0 and r=1
-              s[i] = 0;
-              remainder = 1;
-            }
-    }
-    return s;
-
-    /* need 2 situations: one for a=0 OR b=0. the other for a=1 AND b=1.
-    For the second situation, it needs a while loop because 1+1=2 but 2=0 and a remainder of 1
-
-  }//end of addBinary
-
-  public static int subtractBinary(){
-    //first i need to change b so that it is two's complement
-    //then i just add with new b
-    for (int i=7; i>=0; i--){
-      if (b[i].equals(0)){
-        c[i] = 1;
-      }
-        else{
-          c[i] = 0; //need to somehow make c a new input and make sure it is used in the answer. or do i just keep it as b?
-        }
-    }
-    for (int i=7; i>=0; i--){
-      if (c[i].equals(0)){
-        d[i] = 1;
-    }
-        else{
-          d[i] = 0;
-          remainder = 1;
-        }
-    }
-
-    //then i just do addBinary except change b to d.
-
-  }//end of subtractBinary
-
-  public static int multiplyBinary(){
-
-  }//end of multiplyBinary
-
-  public static int divideBinary(){
-
-  }//end of divideBinary
-
-  public static void main(String[] args){ //main method
-    //ask user to input 2 8 bit numbers and call each a and b. then output number "s"
-    System.out.println("please type an 8 bit binary number");
-    int[] a = new int(System.in); //this makes the  user's first input = a
-
-
-    System.out.println("now type a second 8 bit binary number"); //this makes the user's second input = b
-    int[] b = new int(System.in);
-
-//need to make an array for a and array for b and make the inputs into a and b arrays.
-
-    System.out.println("choose what you would like to do with your binary numbers: add, subtract, multiply, divide");
-    String atith = scan.nextLine();
-    if (atith.equals("add")){
-      System.out.println("the sum of your numbers is " + addBinary(a, b));
-    }
-      else if (atith.equals("subtract")){
-        System.out.println("the difference of your numbers is " + subtractBinary);
-      }
-      else if (atith.equals("multiply")){
-        System.out.println("the product of your numbers is " + multiplyBinary);
-      }
-      else (atith.equals("divide")){ //if it is 'else' then I don't need (atith.equals("divide")) except when I delete it I get like 60 more errors but with it I only have like 2 errors...
-        System.out.println("the quotient of your numbers is " + divideBinary);
-      }
-    } //still need to do multiply and divide
-
-}
+      I only did addition and subtraction because I'm not really sure what I'm doing.
+      Because I don't have the basic understandings of coding, projects are harder.
+      The program doesn't work because of an error at the end. I'm sure that there are plenty of errors throughout this project, but I have no idea where or why.
+      It's pointless for me to keep wasting my time because I am not going to suddenly understand code with a few extra days.
+      I'm fine with whatever grade this gets.
 */
 
-
-//COPY OF BINARY3 - DIF FILE THAT I MADE TO ONLY FOCUS ON ADDITION
-
-
 import java.util.*;
-import java.util.Scanner;
-import java.util.Arrays;
+import java.lang.*;
 
-public class Binary3{ //class is called "Binary".
+public class Binary{//creates class called Binary
 
+  public static void main(String[] args) {//main method
 
-  public static int addBinary(int[] a, int[] b){ //addition method called "addBinary"
-
-    if(a[7].equals(0) && b[7].equals(0)){ //if the last bit of a is 0 AND the last bit of b is 0 then...
-      s[7] = 0; //the sum is 0
-    }
-      else if (a[7].equals(1) && b[7]. equals(1)){ //if the last bit of a is 1 AND the last bit of b is 1 then...
-        s[7] = 0; //the sum is 0 and...
-        remainder = 1; //the remainder is 1
-      }
-        else{
-          s = 1; //otherwise the sum is
-          remainder = 0;
-        }
-
-    //loop to repeat process below until a[0], b[0], and s[0].
-    for (int i=6; i>=0; i--){ // start i at 6 and go until i is more than or equal to 0 and go in the 7to0 direction.
-      if (a[i].equals(0) && b[i].equals(0) && remainder.equals(0)){ //if no variables are 1
-        s[i] = 0;
-        remainder = 0;
-      }
-        else if (a[i].equals(1) && b[i].equals(1) && remainder.equals(1)){ //if all variables are 1
-          s[i] = 1;
-          remainder = 1;
-        }
-          else if (a[i].equals(1) ^ b[i].equals(1) ^ remainder.equals(1)){ //if only one variable=1 then s=1 and r=0.
-            s[i] = 1;
-            remainder = 0;
-          }
-            else{ //if two variables=1 then s=0 and r=1
-              s[i] = 0;
-              remainder = 1;
-            }
-    }
-    return s;
-
-    /* need 2 situations: one for a=0 OR b=0. the other for a=1 AND b=1.
-    For the second situation, it needs a while loop because 1+1=2 but 2 is 0 with a remainder of 1
-    */
-
-  }//end of addBinary
-
-
-
-  public static void main(String[] args){ //main method
-    //ask user to input 2 8 bit numbers and call each a and b. then output number "s"
-    int i = 0;
-    int remainder = 0; //this says that the first number we deal with has a remainder of 0
-    int a = 8; //this makes an array for the first inputed binary number
-    int b = 8; //array for second inputed number
-    int s = 8; //array for outputed number
-
-    System.out.println("please type an 8 bit binary number");
+    System.out.println("type an 8 bit binary number.");//asks user to input a number
     Scanner input1 = new Scanner(System.in);
-    String a = input1.nextLine();//this makes the  user's first input = a
+    String first = input1.nextLine();//scans the users input
 
-
-    System.out.println("now type a second 8 bit binary number"); //this makes the user's second input = b
+    System.out.println("type another 8 bit number.");
     Scanner input2 = new Scanner(System.in);
-    String b = input2.nextLine();
+    String second = input2.nextLine();
 
-//need to make an array for a and array for b and make the inputs into a and b arrays.
+    String[] a = first;//takes inputs and calls it to a or b as arrays
+    String[] b = second;
 
-    System.out.println("the sum of your numbers is " + addBinary(a, b));
+    System.out.println("Do you want to \"add\" or \"subtract\".");//asks user to input add or subtract
+    Scanner input3 = new Scanner(System.in);
+    String word = input3.nextLine();//scans the users input
+
+    if(word.equals("add")){//if input3 is add, then a and b will be used as arrays and the add method will be used
+      System.out.println(Arrays.toString(a)); //uses a as an array
+      System.out.println(Arrays.toString(b)); //uses b as an array
+      String[] s = add(a,b);//calls add method
+      System.out.println(Arrays.toString(s)); //outputs the answer 's'
     }
 
-    } //still need to do multiply and divide
+    if (word.equals("subtract")){ //if input3 is subtract, then a and b will be used as Arrays and the subtract method will be used
+      System.out.println(Arrays.toString(a)); //uses a as an array
+      System.out.println(Arrays.toString(b)); //uses b as an array
+      String[] s = subtract(num1,num2);// calls subtract method
+      System.out.println(Arrays.toString(s)); //outputs the answer
+    }
+  }
+
+    public static String[] add(String[] a, String[] b){ //add method (uses a and b)
+      String[] sum = new String[8];//I don't really know what this is.
+      boolean car = false;//this makes the carry or remainder a boolean (true or false) instead of a 1 or 0 like the sum
+      for(int i = 7; i>-1; i--){//this starts from the first number on the right and moves to the left
+        if(rem==false){ //if the remainder is 0 (or if there is no remainder)...
+          if(a[i].equals("1") && b[i].equals("1")){ //and if the a and b bits both equal 1, then the sum is 0 and there is a remainder
+            s[i] = "0";
+            rem = true;
+          }
+          else if((a[i].equals("1") && b[i].equals("0")) || (a[i].equals("0") && b[i].equals("1"))){ //if the a=1 and the b=0 or the a=0 and the b=1 then the sum is 1 and there is no remainder
+            s[i] = "1";
+            rem = false;
+          }
+          else{ //if neither of the above are true, then the sum is 0 and there is no remainder
+            a[i] = "0";
+            rem = false;
+          }
+        }
+        else{ //if there is a remainder...
+          if(a[i].equals("1") && b[i].equals("1")){ //and if a and b = 1 then the sum is 1 and there is a remainder
+            s[i] = "1";
+            rem = true;
+          }
+          else if((a[i].equals("1") && b[i].equals("0")) || (a[i].equals("0") && b[i].equals("1"))){ //if the a=1 and the b=0 or the a=0 and the b=1 then the sum is 0 and there is a remainder
+            s[i] = "0";
+            rem = true;
+          }
+          else{ //otherwise the sum is 1 and there is no remainder
+            s[i] = "1";
+            rem = false;
+          }
+        }
+      }
+      return s; //the output of this method is 's' (the sum)
+    }
+
+    public static String[] twoc(String[] b){//this method is to help find the Two's Compliment
+      String[] n = new String[8];// this makes a new variable 'n' for negative
+      for(int i= 7; i>-1; i--){
+        if(b[i].equals("0")){ //if b is 1 then it becomes n which would equal 1
+          n[i]="1";
+        }
+        else{ //if b is 0 then b becomes n which would equal 0
+          n[i]="0";
+        }
+      }
+      String[] p = {0,0,0,0,0,0,0,1}; // this makes an array of {0,0,0,0,0,0,0,1} so that we can use it to add. it's called 'p' for plus 1
+    }
+
+    public static String[] subtract(String[] a,String[] b){
+      String[] sub = add(n,p);// creates the Two's Complement by adding the negative of b and using the add method to add 1 to n.
+      return add(a,sub);// adds the Two'sCompliment found above and adds it to a to find the difference of a and b
+    } //it says that there is an error here but I don't know why.

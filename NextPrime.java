@@ -8,32 +8,32 @@ import java.util.*;
 
 public class NextPrime{ //this class determines what the ext largest prime number is after user's input
 
-  public static void printPrimeFactors(int num){
+/*  public static void printPrimeFactors(int num){
     System.out.println("");
 
-  }
+  } */
 
 
   public static boolean checkPrime(int check){ //this method checks if the next number is prime
-    boolean isPrime = true;
-    for (int i = 2; i < check; i++){
-      if (check%i == 0){
-        isPrime = false;
-        break;
+    boolean isPrime = true; //assuming isPrime is true...
+    for (int i = 2; i < check; i++){ //for loop - i starts at 2, adding 1 each time until it is less than check
+      if (check%i == 0){ //if the remainder of check ÷ i is 0...
+        isPrime = false; //... then isPrime is false
+        break; //so the loop should stop (break = stop loop)
       }
     }
-    return isPrime;
+    return isPrime; //otherwise, output isPrime (return = output)
   }
 
 
   public static int nextPrime(int x) { //this method finds the next number
-    int next = x + 1;
-    while (true) {
-      if (checkPrime(next)){ //this uses the yaPrime method but uses 'next' as the object
-        break;
+    int next = x + 1; //input of this method plus 1 equals new integer called next
+    while (true) { //while above is true
+      if (checkPrime(next)){ //if the checkPrime with 'next' as the input is true...
+        break; //stop loop
       }
-      else{
-        next = next + 1;
+      else{ //otherwise...
+        next = next + 1; //keep adding one
       }
     }
     return next;

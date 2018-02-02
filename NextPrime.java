@@ -8,10 +8,28 @@ import java.util.*;
 
 public class NextPrime{ //this class determines what the ext largest prime number is after user's input
 
-/*  public static void printPrimeFactors(int num){
-    System.out.println("");
+  public static void printPrimeFactors(int num){
+    if (num == 2) {
+      System.out.println(num);
+    }
 
-  } */
+
+    for(int i = 2; i < num; i++){
+      //this also could've been for(int i = 2; i < int(num/2); i++) but it can't because of above if statement.
+              //i<num/2 because no number more than a half of it can be divided by it. if num/2 is a factor it will round
+      if (num%i == 0){
+        System.out.println(i);
+        printPrimeFactors(num/i); //calling the function inside of itself. it's called recursion. this is the same thing as 'num = num/i'
+        break;
+      } //if the remainder isn't 0, i adds 1
+      }
+      System.out.println("");
+
+  }
+
+
+
+
 
 
   public static boolean checkPrime(int check){ //this method checks if the next number is prime
@@ -40,13 +58,13 @@ public class NextPrime{ //this class determines what the ext largest prime numbe
   }
 
 
+
   public static void main(String[] args) { //this is my main method
-    System.out.println("Input a number to find the next largest prime number for.");
+    System.out.println("Input a number to find all the prime factors");
     Scanner userNum = new Scanner(System.in);
     int c = userNum.nextInt();
-    int nlPrime = nextPrime(c);
-
-    System.out.println(nlPrime);
+    printPrimeFactors(c);
+      //we don't need to print this because printPrimeFactors method already has a print in it
   }
 
 }

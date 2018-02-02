@@ -45,5 +45,14 @@ public class Data {//a class is needed to execute the problem. the class has to 
     //take integer input from user and create a variable with...
     int integerNum = objectname1.nextInt();
     */
+
+//BELOW is for practice with methods vvv
+    int result = calcFactorial(baseNum); //baseNum is what input we want for calcFactorial method
+  }
+
+    //normally you should put methods above the main.
+  public static long calcFactorial(int x){ //int x is input. long is data type
+    int numb = x;
+    return numb; //return = output
   }
 }

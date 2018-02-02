@@ -6,30 +6,47 @@ define a new method that will find the next largest prime (int x)
 
 import java.util.*;
 
-public class NextPrime{
+public class NextPrime{ //this class determines what the ext largest prime number is after user's input
+
+  public static void printPrimeFactors(int num){
+    System.out.println("");
+
+  }
+
+
+  public static boolean checkPrime(int check){ //this method checks if the next number is prime
+    boolean isPrime = true;
+    for (int i = 2; i < check; i++){
+      if (check%i == 0){
+        isPrime = false;
+        break;
+      }
+    }
+    return isPrime;
+  }
+
+
+  public static int nextPrime(int x) { //this method finds the next number
+    int next = x + 1;
+    while (true) {
+      if (checkPrime(next)){ //this uses the yaPrime method but uses 'next' as the object
+        break;
+      }
+      else{
+        next = next + 1;
+      }
+    }
+    return next;
+  }
+
+
   public static void main(String[] args) { //this is my main method
     System.out.println("Input a number to find the next largest prime number for.");
     Scanner userNum = new Scanner(System.in);
     int c = userNum.nextInt();
+    int nlPrime = nextPrime(c);
 
-    //output whatever is ended up in FindPrime method
-  }
-
-  public static int FindPrime() { //this is my method
-    for (int i = userNum; i++){ //how can I run 2 loops at the same time so that i can keep increasing the one I'm dividing by
-    for (int b = 2; b <= i; b++){
-
-      if{
-        i / b == true;
-        //then keep doing loop
-      }
-      else{
-        //stop loop and output the i
-      }
-
-    }
-    }
-
+    System.out.println(nlPrime);
   }
 
 }

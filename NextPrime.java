@@ -57,7 +57,8 @@ public class NextPrime{ //this class determines what the next largest prime numb
 public static long mersennePrime(int power){
   long finalM = 0;
   for (int i=1; i<power; i++){
-    long mNum = 2**i - 1;
+    long mNuma = 2*i;
+    long mNum = mNuma - 1;
     if (checkPrime(mNum)){
       finalM = mNum;
     }

@@ -29,7 +29,7 @@ public class NextPrime{ //this class determines what the next largest prime numb
 
 
 //because mersennePrime is a long, checkPrime needs to be a long too
-  public static boolean checkPrime(long check){ //this method checks if the next number is prime
+  public static boolean checkPrime(double check){ //this method checks if the next number is prime //turn long into check
     boolean isPrime = true; //assuming isPrime is true...
     for (int i = 2; i < check; i++){ //for loop - i starts at 2, adding 1 each time until it is less than check
       if (check%i == 0){ //if the remainder of check ÷ i is 0...
@@ -54,11 +54,11 @@ public class NextPrime{ //this class determines what the next largest prime numb
     return next;
   }
 
-public static long mersennePrime(int power){
-  long finalM = 0;
+public static double mersennePrime(int power){ //turn longs into check
+  double finalM = 0;
   for (int i=1; i<power; i++){
-    long mNuma = 2*i;
-    long mNum = mNuma - 1;
+    double mNum = Math.pow(2,i) - 1;//long mNuma = 2*i;
+    //long mNum = mNuma - 1; //delete this
     if (checkPrime(mNum)){
       finalM = mNum;
     }
@@ -71,7 +71,7 @@ public static long mersennePrime(int power){
     System.out.println("give me a number plz");
     Scanner userNum = new Scanner(System.in);
     int c = userNum.nextInt();
-    long  result = mersennePrime(c);
+    double  result = mersennePrime(c); //turn long to double
     System.out.println(result);
   }
 

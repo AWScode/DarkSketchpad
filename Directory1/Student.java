@@ -1,9 +1,9 @@
 public class Student{
 
-  public static String name;
-  public static int grade;
-  public static String power;
-  public static String subject;
+  public String name;
+  public int grade;
+  public String power;
+  public String subject;
 
   public Student(String n, int g, String p, String s){
     this.name = n;

@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 public class Subject{
 
-  public static String label; //class name
-  public static int population; //number of students in class
-  public static String teacher;
-  public static boolean powers; //are the powers needed for the class?
+  public String label; //class name
+  public int population; //number of students in class
+  public String teacher;
+  public boolean powers; //are the powers needed for the class?
 
   public Subject(String l, int pop, String t, boolean pow){
     this.label = l;
@@ -47,6 +46,3 @@ public class Subject{
 
 
 }
-=======
-
->>>>>>> 6a48ecc9cd5a79336557bf99c6cae85052b6dc36

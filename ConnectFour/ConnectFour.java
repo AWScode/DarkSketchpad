@@ -25,7 +25,7 @@ public class ConnectFour {
     //String Arrays go first
     this.column1 = new String[6];
     this.column1[0] = "_";
-    this.column1[1] = "_";
+    this.column1[1] = "_"; //these are all the rows of column 1
     this.column1[2] = "_";
     this.column1[3] = "_";
     this.column1[4] = "_";
@@ -79,7 +79,7 @@ public class ConnectFour {
     this.column7[4] = "_";
     this.column7[5] = "_";
 
-    this.board = new Array[7]; //7 because number of items not the index; this.columns is an empty array;
+    this.board = new String[7][6]; //7 because number of items not the index; this.columns is an empty array;
     //use {} instead of [] if we want to fill array; this.columns = new Array{column1; column2, column3,...}
     this.board[0] = column1;
     this.board[1] = column2;
@@ -115,14 +115,16 @@ public class ConnectFour {
   // Other methods here
 
 
-  public void displayBoard(){ //void because there is no return data type
-    for (int i = 0; i < 6; i++){ //i is columns
-      for (int j = 0; j < 7; j++){ //j is rows
-        System.out.print(board[j][i] + " "); //the " " is unnecessary. just to make it look better
-        System.out.println("");
+  public void displayBoard(){
+    for (int j = 0; j < 6; j++) {
+      String row = "";
+      for (int i = 0; i < 7; i++) {
+        row = row + board[i][j] + " ";
       }
+      System.out.println(row);
     }
   }
+
 
   public void addPiece(int columnNum){ //the player's move. this just changes your board
     //need to know the column # and what player it is
@@ -137,10 +139,9 @@ public class ConnectFour {
 
 
 
-  public static void main(String[] args){ //main method to just see what we've done
+  public static void main(String[] args) {
     ConnectFour newGame = new ConnectFour();
     newGame.displayBoard();
   }
-
 
 }

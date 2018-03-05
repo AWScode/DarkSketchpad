@@ -49,7 +49,7 @@ public class ConnectFour {
 
     this.column4 = new String[6];
     this.column4[0] = "_";
-    this.column4[1] = "_";
+    this.column4[1] = "1";
     this.column4[2] = "_";
     this.column4[3] = "_";
     this.column4[4] = "_";
@@ -116,9 +116,9 @@ public class ConnectFour {
 
 
   public void displayBoard(){
-    for (int j = 0; j < 6; j++) {
+    for (int j = 0; j < 6; j++) { //j is row
       String row = "";
-      for (int i = 0; i < 7; i++) {
+      for (int i = 0; i < 7; i++) { //i is column
         row = row + board[i][j] + " ";
       }
       System.out.println(row);
@@ -134,7 +134,25 @@ public class ConnectFour {
   }
 
   public void checkFour(){
-    //
+    //(1) we need to find the specific type of piece - to do this we check each column (loop)
+    //(2) when the spec piece is found, check all adjacent pieces - to check adjacent (i,j) (i+/-1 AND/OR j+/-1)
+    //(3) once a second piece is found, continue by checking in the same direction
+
+    for (i = 0; i < 7; i++){ //first a loop for the columns
+      for (j = 0; j < 6; j++){ //then a loop for the rows
+        if board[i][j].equals("1"){
+          System.out.println(i + ", " + j); //print i and j
+          //find adjacents
+        }
+        else if board[i][j].equals("2"){
+          System.out.println(i + ", " + j);
+          //find adjacents
+        }
+        else{
+          //continue loop - do nothing
+        }
+      }
+    }
   }
 
 
@@ -142,6 +160,8 @@ public class ConnectFour {
   public static void main(String[] args) {
     ConnectFour newGame = new ConnectFour();
     newGame.displayBoard();
+
+    displayBoard.checkFour();
   }
 
 }

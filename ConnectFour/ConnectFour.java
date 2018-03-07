@@ -3,6 +3,7 @@ This class holds all of the data and methods
 to create ConnectFour games. This is a class to be
 imported and used in other files that want to play
 this game. */
+import java.util.*;
 
 public class ConnectFour {
   //Instance Variables here
@@ -130,10 +131,37 @@ public class ConnectFour {
     //need to know the column # and what player it is
     //addPiece will place a piece in the column that is passed in
     //then it will find the lowest possible space and fill it in (the largest row number that is empty)
-
+    System.out.println("Whose move? Player 1 (type '1') or Player 2 (type '2')");
+    Scanner person = new Scanner(System.in);
+    int player = person.nextInt();
+    if (player = 1){//it's player1
+      columnNum = [i];//ISSUE: i is a string but columnNum is an int
+      for (j = 5; j > 0; j--){ //ISSUE: j isn't really what i want. is it an array or int or both????
+        if (j = "_"){
+          j = "1";
+        }
+        else{
+          System.out.println("this column is full");
+          break;
+        }
+      }
+    }
+    else {//it's player2
+      columnNum = [i];
+      for (j = 5; j > 0; j--){
+        if (j = "_"){
+          j = "2";
+        }
+        else{
+          System.out.println("this column is full");
+          break;
+        }
+      }
+    }
   }
 
-  public void checkFour(){
+/*
+public void checkFour(){
     //(1) we need to find the specific type of piece - to do this we check each column (loop)
     //(2) when the spec piece is found, check all adjacent pieces - to check adjacent (i,j) (i+/-1 AND/OR j+/-1)
     //(3) once a second piece is found, continue by checking in the same direction
@@ -154,6 +182,7 @@ public class ConnectFour {
       }
     }
   }
+  */
 
 
 
@@ -161,7 +190,13 @@ public class ConnectFour {
     ConnectFour newGame = new ConnectFour();
     newGame.displayBoard();
 
-    displayBoard.checkFour();
+    System.out.println("Where do you want to put the piece? (enter column number (0-6))");
+    Scanner local = new Scanner(System.in);
+    int place = local.nextInt();
+    newGame.addPiece(place);
+
   }
+
+
 
 }

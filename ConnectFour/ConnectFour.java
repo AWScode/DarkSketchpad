@@ -50,7 +50,7 @@ public class ConnectFour {
 
     this.column4 = new String[6];
     this.column4[0] = "_";
-    this.column4[1] = "1";
+    this.column4[1] = "_";
     this.column4[2] = "_";
     this.column4[3] = "_";
     this.column4[4] = "_";
@@ -127,37 +127,22 @@ public class ConnectFour {
   }
 
 
-  public void addPiece(int columnNum){ //the player's move. this just changes your board
+  public void addPiece(int columnNum, String player){ //the player's move. this just changes your board
     //need to know the column # and what player it is
     //addPiece will place a piece in the column that is passed in
     //then it will find the lowest possible space and fill it in (the largest row number that is empty)
-    System.out.println("Whose move? Player 1 (type '1') or Player 2 (type '2')");
-    Scanner person = new Scanner(System.in);
-    int player = person.nextInt();
-    if (player = 1){//it's player1
-      columnNum = [i];//ISSUE: i is a string but columnNum is an int
-      for (j = 5; j > 0; j--){ //ISSUE: j isn't really what i want. is it an array or int or both????
-        if (j = "_"){
-          j = "1";
+      System.out.println("what?1");//tryna find error
+      for (int j = 5; j < 0; j--){
+        System.out.println("what?2");//tryna find error
+        if (board[columnNum][j].equals("_")){
+          System.out.println("what?3");//tryna find error
+          board[columnNum][j] = player;
         }
         else{
           System.out.println("this column is full");
           break;
         }
       }
-    }
-    else {//it's player2
-      columnNum = [i];
-      for (j = 5; j > 0; j--){
-        if (j = "_"){
-          j = "2";
-        }
-        else{
-          System.out.println("this column is full");
-          break;
-        }
-      }
-    }
   }
 
 /*
@@ -190,10 +175,23 @@ public void checkFour(){
     ConnectFour newGame = new ConnectFour();
     newGame.displayBoard();
 
-    System.out.println("Where do you want to put the piece? (enter column number (0-6))");
-    Scanner local = new Scanner(System.in);
-    int place = local.nextInt();
-    newGame.addPiece(place);
+    String player = "1"; //starting off while loop with (technically) player 2
+    while (true) { //this while loop is to alternate between players' turns (to stop a while loop when running Control C)
+      if (player.equals("1")){
+        player = "2";
+      }
+      else {
+        player = "1";
+      }
+      System.out.println("Player " + player + "'s turn.");
+
+      Scanner place = new Scanner(System.in);
+      newGame.displayBoard();
+      System.out.println("Where do you want to put the piece? (enter column number (0-6))");//for addPiece
+      int col = place.nextInt();//this above gets the column number (int) from user
+      newGame.addPiece(col, player);//this runs addPiece with inputted column (col)
+    }
+
 
   }
 

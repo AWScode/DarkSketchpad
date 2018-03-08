@@ -131,43 +131,60 @@ public class ConnectFour {
     //need to know the column # and what player it is
     //addPiece will place a piece in the column that is passed in
     //then it will find the lowest possible space and fill it in (the largest row number that is empty)
-      System.out.println("what?1");//tryna find error
-      for (int j = 5; j < 0; j--){
-        System.out.println("what?2");//tryna find error
+      for (int j = 5; j > -1; j--){
         if (board[columnNum][j].equals("_")){
-          System.out.println("what?3");//tryna find error
           board[columnNum][j] = player;
+          break;
         }
-        else{
-          System.out.println("this column is full");
+        else if(board[columnNum][0].equals("1") || board[columnNum][0].equals("2")){ //when the column is full, this is run. if someone tries to add to a full column, it tells them it's full and moves on to the next player
+          System.out.println("This column is full.");
           break;
         }
       }
   }
 
-/*
+
 public void checkFour(){
     //(1) we need to find the specific type of piece - to do this we check each column (loop)
     //(2) when the spec piece is found, check all adjacent pieces - to check adjacent (i,j) (i+/-1 AND/OR j+/-1)
     //(3) once a second piece is found, continue by checking in the same direction
 
-    for (i = 0; i < 7; i++){ //first a loop for the columns
-      for (j = 0; j < 6; j++){ //then a loop for the rows
-        if board[i][j].equals("1"){
-          System.out.println(i + ", " + j); //print i and j
+    for (int i = 0; i < 7; i++){ //first a loop for the columns
+      for (int j = 0; j < 6; j++){ //then a loop for the rows
+          if (board[i][j].equals("1")){
+            for(int k = 1; k < 4; k++){ //this just checks each one
+              if (!board[i+k][j-k].equals("1")){
+                return false;
+              }
+              else if (!board[i+k][j-k].equals("1")){
+                System.out.println("Player 1 won!");
+                System.out.println("hit 'control' + 'c'");
+                break;
+              }
+            }
+          }
           //find adjacents
+
+        else if (board[i][j].equals("2")){
+          for(int k = 1; k < 4; k++){ //this just checks each one
+            if (!board[i+k][j-k].equals("1")){
+              return false;
+            }
+            else if (!board[i+k][j-k].equals("1")){
+              System.out.println("Player 1 won!");
+              System.out.println("hit 'control' + 'c'");
+              break;
+            }
+          }
         }
-        else if board[i][j].equals("2"){
-          System.out.println(i + ", " + j);
-          //find adjacents
-        }
-        else{
+
+
           //continue loop - do nothing
-        }
+
       }
     }
   }
-  */
+
 
 
 
@@ -175,21 +192,22 @@ public void checkFour(){
     ConnectFour newGame = new ConnectFour();
     newGame.displayBoard();
 
-    String player = "1"; //starting off while loop with (technically) player 2
+    String person = "1"; //starting off while loop with (technically) player 2
     while (true) { //this while loop is to alternate between players' turns (to stop a while loop when running Control C)
-      if (player.equals("1")){
-        player = "2";
+      if (person.equals("1")){
+        person = "2";
       }
       else {
-        player = "1";
+        person = "1";
       }
-      System.out.println("Player " + player + "'s turn.");
+      System.out.println("Player " + person + "'s turn.");
 
       Scanner place = new Scanner(System.in);
       newGame.displayBoard();
-      System.out.println("Where do you want to put the piece? (enter column number (0-6))");//for addPiece
-      int col = place.nextInt();//this above gets the column number (int) from user
-      newGame.addPiece(col, player);//this runs addPiece with inputted column (col)
+      System.out.println("Where do you want to put the piece? (enter column number (1-7))");//for addPiece
+      int col = place.nextInt()-1;//this above gets the column number (int) from user ---- -1 is so that the column numbers are less confusing
+      newGame.addPiece(col, person);//this runs addPiece with inputted column (col) and player (person)
+      newGame.checkFour();
     }
 
 

@@ -144,39 +144,89 @@ public class ConnectFour {
   }
 
 
-public void checkFour(){
+public void checkFourUR(){
     //(1) we need to find the specific type of piece - to do this we check each column (loop)
     //(2) when the spec piece is found, check all adjacent pieces - to check adjacent (i,j) (i+/-1 AND/OR j+/-1)
     //(3) once a second piece is found, continue by checking in the same direction
-
+    int c = 0;
     for (int i = 0; i < 7; i++){ //first a loop for the columns
       for (int j = 0; j < 6; j++){ //then a loop for the rows
-        if (board[i][j].equals("1")){
-          for(int k = 1; k < 4; k++){ //this just checks each one
-            if (board[i+k][j-k].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
+            if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
+              for(int k = 1; k < 5; k++){
+                if (board[i+k][j-k].equals("1")){
                 k = k+1;
-              System.out.println("4 in a row!");//this worked but only for every 2 in a row
+                c++;
+            }
+
+
+            else if (board[i+k][j-k].equals("2") || board[i+k][j-k].equals("_")){
               break;
             }
+}
+          if (c==3){
+            System.out.println("4 in a row! Player 1 won!");
+            System.out.println("press 'control' + 'c'");
+            break;
           }
         }
 
-        /*else if (!board[i][j].equals("2")){
-          for(int k = 1; k < 4; k++){ //this just checks each one
-            if (board[i+k][j+k].equals("2")){
-              System.out.println("Player 2 won!");
-              System.out.println("hit 'control' + 'c'");
+      }
+    }
+  } //this works but only for i+k, j-k (up,right)
+
+  public void checkFourRR(){//this is for i-k, j (only to the right)
+    int c = 0;
+    for (int i = 0; i < 7; i++){ //first a loop for the columns
+      for (int j = 0; j < 6; j++){ //then a loop for the rows
+            if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
+              for(int k = 1; k < 5; k++){
+                if (board[i+k][j].equals("1")){
+                k = k+1;
+                c++;
+            }
+
+
+            else if (board[i+k][j].equals("2") || board[i+k][j].equals("_")){
               break;
             }
           }
-        } */
-
-
-          //continue loop - do nothing
+          if (c==3){
+            System.out.println("4 in a row! Player 1 won!");
+            System.out.println("press 'control' + 'c'");
+            break;
+          }
+        }
 
       }
     }
-  }
+  }//this all worked but it didn't reprint the board after which is part of main
+
+  public void checkFourDD(){//checks i, j+k (only checks down)
+    int c = 0;
+    for (int i = 0; i < 7; i++){ //first a loop for the columns
+      for (int j = 0; j < 6; j++){ //then a loop for the rows
+            if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
+              for(int k = 1; k < 5; k++){
+                if (board[i][j-k].equals("1")){
+                k = k+1;
+                c++;
+            }
+
+
+            else if (board[i][j-k].equals("2") || board[i][j-k].equals("_")){
+              break;
+            }
+          }
+          if (c==3){
+            System.out.println("4 in a row! Player 1 won!");
+            System.out.println("press 'control' + 'c'");
+            break;
+          }
+        }
+
+      }
+    }
+  }//this doesn't work
 
 
 
@@ -200,7 +250,8 @@ public void checkFour(){
       System.out.println("Where do you want to put the piece? (enter column number (0-6))");//for addPiece
       int col = place.nextInt();//this above gets the column number (int) from user ---- -1 is so that the column numbers are less confusing
       newGame.addPiece(col, person);//this runs addPiece with inputted column (col) and player (person)
-      newGame.checkFour();
+      newGame.checkFourUR();
+      newGame.checkFourRR();
     }
 
 

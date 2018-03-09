@@ -143,7 +143,212 @@ public class ConnectFour {
       }
   }
 
+  public Boolean checkFour(){//boolean only to determine whether game is over or not. not really working.
+    int c = 0;
 
+    for (int i = 0; i<7; i++){
+      for (int j = 0; j<6; j++){
+
+        if (board[i][j].equals("1")){//checks for player 1
+          c = 1;
+
+          for (int k = 0; k<4; k++){
+
+            //northwest
+            if (j-k > -1){//make sure it isn't out of bounds/off the board
+              if (i+k < 7){
+                if (board[i+k][j-k].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                  c = 1;
+                  break;
+                }
+                else if (board[i+k][j-k].equals("2")){
+                  c = 1;
+                  break;
+                }
+                else{
+                  c++;//if it is right (the NW adjacent), we keep checking in that direction
+                  if (c==4){//until there are 4 in a row
+                    gameOver = true;//then the game is over
+                    break;
+                  }
+                }
+              }
+            }
+          }
+
+          for (int k = 0; k<4; k++){
+
+            //west
+              if (i+k < 7){
+                if (board[i+k][j].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                  c = 1;
+                  break;
+                }
+                else if (board[i+k][j].equals("2")){
+                  c = 1;
+                  break;
+                }
+                else{
+                  c++;//if it is right (the NW adjacent), we keep checking in that direction
+                  if (c==4){//until there are 4 in a row
+                    gameOver = true;//then the game is over
+                    break;
+                  }
+                }
+              }
+            }
+
+            for (int k = 0; k<4; k++){
+
+              //southwest
+              if (j+k < 6){//make sure it isn't out of bounds/off the board
+                if (i+k < 7){
+                  if (board[i+k][j+k].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                    c = 1;
+                    break;
+                  }
+                  else if (board[i+k][j+k].equals("2")){
+                    c = 1;
+                    break;
+                  }
+                  else{
+                    c++;//if it is right (the NW adjacent), we keep checking in that direction
+                    if (c==4){//until there are 4 in a row
+                      gameOver = true;//then the game is over
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+
+            for (int k = 0; k<4; k++){
+
+              //south
+              if (j+k < 6){//make sure it isn't out of bounds/off the board
+                  if (board[i][j+k].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                    c = 1;
+                    break;
+                  }
+                  else if (board[i][j+k].equals("2")){
+                    c = 1;
+                    break;
+                  }
+                  else{
+                    c++;//if it is right (the NW adjacent), we keep checking in that direction
+                    if (c==4){//until there are 4 in a row
+                      gameOver = true;//then the game is over
+                      break;
+                    }
+                  }
+              }
+            }
+//end of player 1
+          }
+
+        if (board[i][j].equals("2")){//checks for player 2
+            c = 1;
+
+            for (int k = 0; k<4; k++){
+
+                      //northwest
+              if (j-k > -1){//make sure it isn't out of bounds/off the board
+                if (i+k < 7){
+                  if (board[i+k][j-k].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                    c = 1;
+                    break;
+                          }
+                  else if (board[i+k][j-k].equals("1")){
+                    c = 1;
+                    break;
+                          }
+                  else{
+                    c++;//if it is right (the NW adjacent), we keep checking in that direction
+                    if (c==4){//until there are 4 in a row
+                    gameOver = true;//then the game is over
+                    break;
+                            }
+                          }
+                        }
+                      }
+                    }
+
+              for (int k = 0; k<4; k++){
+
+                      //west
+                if (i+k < 7){
+                  if (board[i+k][j].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                    c = 1;
+                    break;
+                          }
+                  else if (board[i+k][j].equals("1")){
+                    c = 1;
+                    break;
+                          }
+                  else{
+                    c++;//if it is right (the NW adjacent), we keep checking in that direction
+                    if (c==4){//until there are 4 in a row
+                      gameOver = true;//then the game is over
+                      break;
+                            }
+                          }
+                        }
+                      }
+
+              for (int k = 0; k<4; k++){
+
+                        //southwest
+                if (j+k < 6){//make sure it isn't out of bounds/off the board
+                  if (i+k < 7){
+                    if (board[i+k][j+k].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                      c = 1;
+                      break;
+                            }
+                    else if (board[i+k][j+k].equals("1")){
+                      c = 1;
+                      break;
+                            }
+                    else{
+                      c++;//if it is right (the NW adjacent), we keep checking in that direction
+                      if (c==4){//until there are 4 in a row
+                        gameOver = true;//then the game is over
+                        break;
+                              }
+                            }
+                          }
+                        }
+                      }
+
+              for (int k = 0; k<4; k++){
+
+                        //south
+                if (j+k < 6){//make sure it isn't out of bounds/off the board
+                    if (board[i][j+k].equals("_")){//if we see empty or 2 that's adjacent, we don't need to go in that direction
+                      c = 1;
+                      break;
+                            }
+                    else if (board[i][j+k].equals("1")){
+                      c = 1;
+                      break;
+                            }
+                    else{
+                      c++;//if it is right (the NW adjacent), we keep checking in that direction
+                      if (c==4){//until there are 4 in a row
+                        gameOver = true;//then the game is over
+                        break;
+                              }
+                            }
+                        }
+                      }
+          //end of player 2
+                    }
+
+        }
+      }
+    }
+
+
+/*
 public void checkFourUR(){
     //(1) we need to find the specific type of piece - to do this we check each column (loop)
     //(2) when the spec piece is found, check all adjacent pieces - to check adjacent (i,j) (i+/-1 AND/OR j+/-1)
@@ -176,7 +381,7 @@ public void checkFourUR(){
 
   public void checkFourRR(){//this is for i-k, j (only to the right)
     int c = 0;
-    for (int i = 0; i < 7; i++){ //first a loop for the columns
+    for (int i = 0; i < 5; i++){ //first a loop for the columns
       for (int j = 0; j < 6; j++){ //then a loop for the rows
             if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
               for(int k = 1; k < 5; k++){
@@ -204,7 +409,7 @@ public void checkFourUR(){
   public void checkFourDD(){//checks i, j+k (only checks down)
     int c = 0;
     for (int i = 0; i < 7; i++){ //first a loop for the columns
-      for (int j = 0; j < 6; j++){ //then a loop for the rows
+      for (int j = 0; j < 4; j++){ //then a loop for the rows
             if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
               for(int k = 1; k < 5; k++){
                 if (board[i][j-k].equals("1")){
@@ -228,7 +433,7 @@ public void checkFourUR(){
     }
   }//this doesn't work
 
-
+*/
 
 
   public static void main(String[] args) {
@@ -250,8 +455,7 @@ public void checkFourUR(){
       System.out.println("Where do you want to put the piece? (enter column number (0-6))");//for addPiece
       int col = place.nextInt();//this above gets the column number (int) from user ---- -1 is so that the column numbers are less confusing
       newGame.addPiece(col, person);//this runs addPiece with inputted column (col) and player (person)
-      newGame.checkFourUR();
-      newGame.checkFourRR();
+      newGame.checkFour();
     }
 
 

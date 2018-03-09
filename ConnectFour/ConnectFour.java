@@ -151,32 +151,25 @@ public void checkFour(){
 
     for (int i = 0; i < 7; i++){ //first a loop for the columns
       for (int j = 0; j < 6; j++){ //then a loop for the rows
-          if (board[i][j].equals("1")){
-            for(int k = 1; k < 4; k++){ //this just checks each one
-              if (!board[i+k][j-k].equals("1")){
-                return false;
-              }
-              else if (!board[i+k][j-k].equals("1")){
-                System.out.println("Player 1 won!");
-                System.out.println("hit 'control' + 'c'");
-                break;
-              }
-            }
-          }
-          //find adjacents
-
-        else if (board[i][j].equals("2")){
+        if (board[i][j].equals("1")){
           for(int k = 1; k < 4; k++){ //this just checks each one
-            if (!board[i+k][j-k].equals("1")){
-              return false;
-            }
-            else if (!board[i+k][j-k].equals("1")){
-              System.out.println("Player 1 won!");
-              System.out.println("hit 'control' + 'c'");
+            if (board[i+k][j-k].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
+                k = k+1;
+              System.out.println("4 in a row!");//this worked but only for every 2 in a row
               break;
             }
           }
         }
+
+        /*else if (!board[i][j].equals("2")){
+          for(int k = 1; k < 4; k++){ //this just checks each one
+            if (board[i+k][j+k].equals("2")){
+              System.out.println("Player 2 won!");
+              System.out.println("hit 'control' + 'c'");
+              break;
+            }
+          }
+        } */
 
 
           //continue loop - do nothing
@@ -204,8 +197,8 @@ public void checkFour(){
 
       Scanner place = new Scanner(System.in);
       newGame.displayBoard();
-      System.out.println("Where do you want to put the piece? (enter column number (1-7))");//for addPiece
-      int col = place.nextInt()-1;//this above gets the column number (int) from user ---- -1 is so that the column numbers are less confusing
+      System.out.println("Where do you want to put the piece? (enter column number (0-6))");//for addPiece
+      int col = place.nextInt();//this above gets the column number (int) from user ---- -1 is so that the column numbers are less confusing
       newGame.addPiece(col, person);//this runs addPiece with inputted column (col) and player (person)
       newGame.checkFour();
     }

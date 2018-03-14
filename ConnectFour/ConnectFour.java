@@ -95,24 +95,7 @@ public class ConnectFour {
   }
 
   // Get and Set Methods here
-  /*public String getPiece(){ //to get any position and see if it is empty or occupied by _____
-    return ;
-  }
 
-  public Boolean getGameOver(){
-    return false;
-  }
-
-
-  public void setPiece(){
-
-  }
-
-  public void setGameOver(Boolean gameOver){
-
-  }
-
-*/
   // Other methods here
 
 
@@ -127,20 +110,21 @@ public class ConnectFour {
   }
 
 
-  public void addPiece(int columnNum, String player){ //the player's move. this just changes your board
+  public Boolean addPiece(int columnNum, String player){ //the player's move. this just changes your board
     //need to know the column # and what player it is
     //addPiece will place a piece in the column that is passed in
     //then it will find the lowest possible space and fill it in (the largest row number that is empty)
+    columnNum = columnNum - 1; //this makes it so that instead of the columns being called 0-6, they are called 1-7
       for (int j = 5; j > -1; j--){
         if (board[columnNum][j].equals("_")){
           board[columnNum][j] = player;
           break;
         }
-        else if(board[columnNum][0].equals("1") || board[columnNum][0].equals("2")){ //when the column is full, this is run. if someone tries to add to a full column, it tells them it's full and moves on to the next player
-          System.out.println("This column is full.");
-          break;
+        if(j == 0){
+          return false;
         }
       }
+      return true;
   }
 
   public Boolean checkFour(){//boolean only to determine whether game is over or not. not really working.
@@ -345,102 +329,20 @@ public class ConnectFour {
 
         }
       }
-    }
+      return gameOver;
+  }
 
 
-/*
-public void checkFourUR(){
-    //(1) we need to find the specific type of piece - to do this we check each column (loop)
-    //(2) when the spec piece is found, check all adjacent pieces - to check adjacent (i,j) (i+/-1 AND/OR j+/-1)
-    //(3) once a second piece is found, continue by checking in the same direction
-    int c = 0;
-    for (int i = 0; i < 7; i++){ //first a loop for the columns
-      for (int j = 0; j < 6; j++){ //then a loop for the rows
-            if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
-              for(int k = 1; k < 5; k++){
-                if (board[i+k][j-k].equals("1")){
-                k = k+1;
-                c++;
-            }
 
-
-            else if (board[i+k][j-k].equals("2") || board[i+k][j-k].equals("_")){
-              break;
-            }
-}
-          if (c==3){
-            System.out.println("4 in a row! Player 1 won!");
-            System.out.println("press 'control' + 'c'");
-            break;
-          }
-        }
-
-      }
-    }
-  } //this works but only for i+k, j-k (up,right)
-
-  public void checkFourRR(){//this is for i-k, j (only to the right)
-    int c = 0;
-    for (int i = 0; i < 5; i++){ //first a loop for the columns
-      for (int j = 0; j < 6; j++){ //then a loop for the rows
-            if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
-              for(int k = 1; k < 5; k++){
-                if (board[i+k][j].equals("1")){
-                k = k+1;
-                c++;
-            }
-
-
-            else if (board[i+k][j].equals("2") || board[i+k][j].equals("_")){
-              break;
-            }
-          }
-          if (c==3){
-            System.out.println("4 in a row! Player 1 won!");
-            System.out.println("press 'control' + 'c'");
-            break;
-          }
-        }
-
-      }
-    }
-  }//this all worked but it didn't reprint the board after which is part of main
-
-  public void checkFourDD(){//checks i, j+k (only checks down)
-    int c = 0;
-    for (int i = 0; i < 7; i++){ //first a loop for the columns
-      for (int j = 0; j < 4; j++){ //then a loop for the rows
-            if (board[i][j].equals("1")){//k should be increasing. i tried another for loop to have k increase but it didnt work
-              for(int k = 1; k < 5; k++){
-                if (board[i][j-k].equals("1")){
-                k = k+1;
-                c++;
-            }
-
-
-            else if (board[i][j-k].equals("2") || board[i][j-k].equals("_")){
-              break;
-            }
-          }
-          if (c==3){
-            System.out.println("4 in a row! Player 1 won!");
-            System.out.println("press 'control' + 'c'");
-            break;
-          }
-        }
-
-      }
-    }
-  }//this doesn't work
-
-*/
 
 
   public static void main(String[] args) {
     ConnectFour newGame = new ConnectFour();
     newGame.displayBoard();
+    newGame.checkFour();
+    int count = 1;
 
-    String person = "1"; //starting off while loop with (technically) player 2
+    String person = "2"; //starting off while loop with (technically) player 2
     while (true) { //this while loop is to alternate between players' turns (to stop a while loop when running Control C)
       if (person.equals("1")){
         person = "2";
@@ -449,14 +351,29 @@ public void checkFourUR(){
         person = "1";
       }
       System.out.println("Player " + person + "'s turn.");
+    }
 
+    Boolean hey = false; //it's saying that hey is an unreachable statement?????
+    while (!hey){
       Scanner place = new Scanner(System.in);
       newGame.displayBoard();
-      System.out.println("Where do you want to put the piece? (enter column number (0-6))");//for addPiece
+      System.out.println("Where do you want to put the piece? (enter column number (1-7))");//for addPiece
       int col = place.nextInt();//this above gets the column number (int) from user ---- -1 is so that the column numbers are less confusing
-      newGame.addPiece(col, person);//this runs addPiece with inputted column (col) and player (person)
-      newGame.checkFour();
+      hey = newGame.addPiece(col, person); //this runs addPiece with inputted column (col) and player (person)
+      if (!hey){
+        System.out.println("this column is full. pick something else plz.");
+      }
     }
+
+    newGame.checkFour();
+
+    Boolean end = newGame.checkFour();
+
+    if (end == true){
+      System.out.println("Game over!");
+      System.out.println("PLayer " + person + " wins!");
+    }
+
 
 
   }

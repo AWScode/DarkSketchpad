@@ -77,22 +77,40 @@ public class Library {
     return sortList;
   }
 
-  public ArrayList<String> wLengthMergeSort(){
-    ArrayList<String> sortL = new ArrayList<String>();
-    ArrayList<String> tempL = new ArrayList<String>();
-    ArrayList<String> subList = new ArrayList<String>();
-
-    if (tempL.size() > 1){//while the list is greater than 1, split that list in half.
-      //split by making them into new lists (subList)
-
-      //if the list = 1, merge and compare with another 1 word.
-      //sort those in the right order, then compare with the first word of another sorted mix
+  public ArrayList<String> merge(ArrayList<String> sorted1, ArrayList<String> sorted2){
+    //combine the two lists
+    ArrayList<String> finalList = new ArrayList<String>();
+    int index1 = 0;//creating an index for each list
+    int index2 = 0;//index for second list
+    for (int i = 0; i < sorted1.size() + sorted2.size(); i++){
+      //we need to keep track of which index we are on
+      if (sorted1.get(index1) <= sorted2.get(index2)){//technically we can't compare the two lists for some reason idk I zoned out when he was explaining
+        finalList.add(sorted1.get(index1));//add to final list
+        index1++;
+      }
+      else{
+        finalList.add(sorted2,get(index2));
+        index2++;
+      }
     }
-    else if (subList.size() = 1){
-      //compare to another list.
-      //combine with that list in a sorted manner ---> sortL
+    return finalList;
+  }
+
+  public ArrayList<String> mergeWLengthSort(ArrayList<String> myList){
+    if (myList.size() <= 1){
+      return myList;
     }
-    return sortL;
+    else{
+      ArrayList<String> list1 = ;//first 1/2 of list
+      ArrayList<String> list2 = ;//second 1/2 of list
+
+      ArrayList<String> sorted1 = mergeWLengthSort(list1);
+      ArrayList<String> sorted2 = mergeWLengthSort(list2);
+
+      //now we need to merge sorted1 and sorted2
+      ArrayList<String> sortedFinal = merge(sorted1, sorted2); //calling on merge method that's made above
+      return sortedFinal;
+    }
   }
 
 

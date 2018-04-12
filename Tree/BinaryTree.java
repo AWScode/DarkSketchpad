@@ -10,8 +10,21 @@ public class BinaryTree {
 
   public Node root;
 
-  public BinaryTree(Node root) {
-    this.root = root;
+  public BinaryTree(Node root, int input) {
+    this.root = root;//this whole thing relies on the root changing to everything
+//this is suuuuuper not complete because I don't have anything about what happens when there is already something in that space
+    this.left = nada;
+    this.right = nada;
+
+    if(input < root){//need to make input thingy
+      input = this.left;
+    }
+    else if (input > root){
+      input = this.right;
+    }
+    else if (input = root){
+      input = this.right; //but only if there is nothing already on the right
+    }
 
   }
 
@@ -28,5 +41,12 @@ public class BinaryTree {
   }
 
   public static void main(String[] args) {
+    System.out.println("Input your first number: ")
+    Scanner first = new Scanner(System.in);
+    Node root = first;
+
+    System.out.println("Input a number that you would like to add: ");
+    Scanner in = new Scanner(System.in);
+    int input = in;
 
   }

@@ -6,47 +6,107 @@ and searching for data possible in O(logn) time */
 import java.util.*;
 import java.io.*;
 
-public class BinaryTree {
+public class BinaryTree{
 
   public Node root;
 
-  public BinaryTree(Node root, int input) {
-    this.root = root;//this whole thing relies on the root changing to everything
-//this is suuuuuper not complete because I don't have anything about what happens when there is already something in that space
-    this.left = nada;
-    this.right = nada;
+/*
+almost all of my errors are "expected ';'" and "illegal start of expression" mostly on the starts of methods
+*/
+  public BinaryTree(int val){
+    Node root1 = new Node(val);
+    this.root = root1;
+  }
 
-    if(input < root){//need to make input thingy
-      input = this.left;
+  public Node getRoot(){
+    return this.root;
+  }
+
+  public boolean searchNode(int val){//HW 4/13
+    Node hiNode = root;
+    while (hiNode.val != val){
+      if (val < hiNode.val){
+        hiNode = hiNode.child1;
+      }
+      else{
+        hiNode = hiNode.child2;
+      }
+      if (hiNode == null){
+        return null;
+      }
     }
-    else if (input > root){
-      input = this.right;
+    return hiNode;
+  }
+
+  public void addNode(int val){//HW 4/13
+    Node newNode = new Node(val);
+
+    if (root == null){
+      root = newNode;
     }
-    else if (input = root){
-      input = this.right; //but only if there is nothing already on the right
+    else{
+      Node hiNode = root;
+      Node parent;
+      while(true){
+        parent = hiNode;
+        if (val < hiNode.val){
+          hiNode = hiNode.child1;//child1 is actually getChild(false)
+          if (hiNode == null){//if left node has no children
+            parent.child1 = newNode;
+            return;
+          }
+          else{
+            hiNode = hiNode.child2;
+            if(hiNode == null){//if right child has no children
+              parent.child2 = newNode;
+              return
+            }//says there is error here
+          }
+        }
+      }
     }
-
   }
 
-  public boolean searchNode(Int val) {
-
+  public boolean removeNode(int val, Node parent) {//HW 4/13
+    if (val < this.val){
+      if (child1 != null){
+        return child1.removeNode(val, this);
+      }
+      else{
+        return false;
+      }
+    }
+    else if(val > this.val){
+      if (child2 != null){
+        return child2.removeNode(val, this);
+      }
+    }
   }
 
-  public void addNode(Int val) {
-
+  public printTree(Node root){//this isn't a good print tree method because a good one would take a long time. make a good one for extra credit
+    if (root != null) {//print tree doesn't have a loop. How does it print the whole tree??? ---> because it is *recursive*
+      String valS = Integer.toString(root.getValue());
+      System.out.println("[" + val + "]");
+      this.printTree(root.getChild(false));
+      this.printTree(root.getChild(true));
+    }
   }
 
-  public void removeNode(Int val) {
+  public static void main(String[] args){//says there is error here
 
+    BinaryTree tree1 = new BinaryTree(10);//this starts us with a root
+
+    tree1.addNode(8);
+    tree1.addNode(12);
+    tree1.addNode(14);
+    tree1.addNode(13);
+    tree1.addNode(11);
+    tree1.printTree(tree1.getRoot());
+    System.out.println("Searching for 8...");
+    System.out.println(tree1.searchNode(8));
+    System.out.println("Searching for 13...");
+    System.out.println(tree1.searchNode(13));
+    System.out.println("Searching for 15...");
+    System.out.println(tree1.searchNode(15));
   }
-
-  public static void main(String[] args) {
-    System.out.println("Input your first number: ")
-    Scanner first = new Scanner(System.in);
-    Node root = first;
-
-    System.out.println("Input a number that you would like to add: ");
-    Scanner in = new Scanner(System.in);
-    int input = in;
-
-  }
+}//says there is error here

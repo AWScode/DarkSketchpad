@@ -3,13 +3,13 @@ import java.awt.*;
 
 public class Restaurant extends Frame{
 
-  private TextField name;
-  private TextField party;
-  private TextArea ta;
+  private TextArea name;
+  private TextArea party;
+  private TextField tf;
   private Button b;
-  private TextField foods;
-  private TextField quantity;
-  private TextField tf3;
+  private TextArea foods;
+  private TextArea quantity;
+  private TextArea ta3;
 
   public Restaurant() {
 
@@ -24,29 +24,29 @@ public class Restaurant extends Frame{
     });
 
 
-    name = new TextField("");
-    name.setBounds(110, 80, 150, 20);
+    name = new TextArea();
+    name.setBounds(110, 80, 150, 40);
     add(name);
-    party = new TextField("");
-    party.setBounds(110, 110, 80, 20);
+    party = new TextArea();
+    party.setBounds(110, 120, 80, 40);
     add(party);
 
-    foods = new TextField("");
-    foods.setBounds(80, 200, 50, 20);
+    foods = new TextArea();
+    foods.setBounds(80, 200, 50, 40);
     add(foods);
-    /*quantity = new TextField("");
-    quantity.setBounds(220, 150, 50, 20);
-    add(quantity);*/
 
-  b = new Button("submit");
+    tf = new TextField("");
+    tf.setBounds(415, 80, 150, 60);
+    add(tf);
+
+    b = new Button("name/#");
     b.setBounds(210, 130, 90, 30);
-    this.add(b);
-
-    /*b.addActionListener(new ActionListener() {//says there's an error here
-      public void ActionPerformed(ActionEvent e){
-        ta.setText(name + ", party of " + party);
+    add(b);
+    b.addActionListener(new ActionListener() {//says there's an error here
+      public void actionPerformed(ActionEvent e){
+        tf.setText(name.getText() + ", party of " + party.getText());
       }
-    });*/
+    });
 
   }
 
@@ -65,7 +65,7 @@ public class Restaurant extends Frame{
     able.setBounds(20, 80, 100, 30);
     this.add(able);
     Label label = new Label("# of People");
-    label.setBounds(20, 100, 130, 30);
+    label.setBounds(20, 120, 130, 30);
     this.add(label);
     Label foodl = new Label("Food #:");
     foodl.setBounds(20, 200, 50, 30);

@@ -34,15 +34,11 @@ public class Restaurant extends Frame{
     foods = new TextField("");
     foods.setBounds(80, 150, 50, 20);
     add(foods);
-    quantity = new TextField("");
+    /*quantity = new TextField("");
     quantity.setBounds(220, 150, 50, 20);
-    add(quantity);
+    add(quantity);*/
 
-    tf3 = new TextField("");
-    tf3.setBounds(20, 230, 100, 50);
-    add(tf3);
-
-    b = new Button("submit");
+  /*  b = new Button("submit");
     b.setBounds(285, 190, 100, 30);
     this.add(b);
 
@@ -50,7 +46,7 @@ public class Restaurant extends Frame{
       public void ActionPerformed(ActionEvent e){
         tf3.setText("Your Order"); //("your order" + quantity + food)
       }
-    });
+    });*/
 
   }
 
@@ -91,12 +87,22 @@ public class Restaurant extends Frame{
 
   public void addChoice() {
     Choice c = new Choice();
-    c.setBounds(140, 190, 100, 50);
+    c.setBounds(120, 190, 100, 50);
     c.add("-----");
     c.add("cash");
     c.add("credit");
     c.add("debit");
     this.add(c);
+
+    Choice ch = new Choice();
+    ch.setBounds(220, 150, 70, 30);
+    ch.add("--");
+    ch.add("1");
+    ch.add("2");
+    ch.add("3");
+    ch.add("4");
+    ch.add("5");
+    this.add(ch);
   }
 
   public void addList() {

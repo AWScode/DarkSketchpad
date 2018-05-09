@@ -7,13 +7,16 @@ public class Restaurant extends Frame{
   private TextArea party;
   private TextField tf;
   private Button b;
-  private TextArea foods;
-  private TextArea quantity;
   private TextArea ta3;
+  private Choice ch;
+  private Choice food;
+  private Button b2;
+  private TextField tf2;
+  private Button order;
 
   public Restaurant() {
 
-    setSize(600,500);
+    setSize(600,400);
     setLayout(null);
     setVisible(true);
 
@@ -31,10 +34,6 @@ public class Restaurant extends Frame{
     party.setBounds(110, 120, 80, 40);
     add(party);
 
-    foods = new TextArea();
-    foods.setBounds(80, 200, 50, 40);
-    add(foods);
-
     tf = new TextField("");
     tf.setBounds(415, 80, 150, 60);
     add(tf);
@@ -48,15 +47,56 @@ public class Restaurant extends Frame{
       }
     });
 
+    ch = new Choice();
+    ch.setBounds(235, 200, 70, 30);
+    ch.add("--");
+    ch.add("1");
+    ch.add("2");
+    ch.add("3");
+    ch.add("4");
+    ch.add("5");
+    add(ch);
+
+    food = new Choice();
+    food.setBounds(75, 200, 70, 30);
+    food.add("--");
+    food.add("1");
+    food.add("2");
+    food.add("3");
+    food.add("4");
+    add(food);
+
+    tf2 = new TextField("");
+    tf2.setBounds(30, 300, 150, 80);
+    add(tf2);
+
+    b2 = new Button("OK");
+    b2.setBounds(250, 250, 90, 30);
+    add(b2);
+    /*b2.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev){
+        tf2.setText(ch.getText() + " of number " + food.getText() "\n PRICE: $0     our treat ;)");
+      }
+    });*/
+
+    order = new Button("ORDER");
+    order.setBounds(200, 320, 100, 30);
+    add(order);
+    /*order.addActionListener(new ActionListener() {
+      public void actionPerformed(Action Event eve){
+        order.//open new window that says "order complete" or something
+      }
+    });*/
+
   }
 
 
   public void addLabel() {
-    Label lab = new Label("Welcome to PIZZA PLANET");
-    lab.setBounds(20, 30, 250, 30);
+    Label lab = new Label("Welcome to PIZZA PLANET Canada");
+    lab.setBounds(20, 30, 280, 30);
     this.add(lab);
     Label bel = new Label("menu");
-    bel.setBounds(470, 180, 80, 30);
+    bel.setBounds(450, 180, 80, 30);
     this.add(bel);
     Label abe = new Label("Payment Type:");
     abe.setBounds(20, 250, 100, 30);
@@ -71,7 +111,7 @@ public class Restaurant extends Frame{
     foodl.setBounds(20, 200, 50, 30);
     this.add(foodl);
     Label quant = new Label("Quantity:");
-    quant.setBounds(150, 200, 70, 30);
+    quant.setBounds(170, 200, 65, 30);
     this.add(quant);
   }
 
@@ -94,20 +134,11 @@ public class Restaurant extends Frame{
     c.add("debit");
     this.add(c);
 
-    Choice ch = new Choice();
-    ch.setBounds(220, 200, 70, 30);
-    ch.add("--");
-    ch.add("1");
-    ch.add("2");
-    ch.add("3");
-    ch.add("4");
-    ch.add("5");
-    this.add(ch);
   }
 
   public void addList() {
     List l = new List(4);
-    l.setBounds(430, 210, 120, 90);
+    l.setBounds(410, 210, 120, 90);
     l.add("1. spaghetti");
     l.add("2. tacos");
     l.add("3. spaghetti tacos");

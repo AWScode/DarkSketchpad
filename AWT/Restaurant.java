@@ -84,7 +84,7 @@ public class Restaurant extends Frame{
     frame2.add(ordered);
 
     ordereded = new TextField("Thank you for ordering at PIZZA PLANET! Canada");//"at" if for here, "from" if to go
-    ordereded.setBounds(35,160,315,40);
+    ordereded.setBounds(30,160,325,40);
     ordereded.setBackground(Color.white);
     frame2.add(ordereded);
 
